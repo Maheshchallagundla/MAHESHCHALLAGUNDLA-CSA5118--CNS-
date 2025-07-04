@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define SIZE 26
+
+int main() {
+    char plaintext[100], ciphertext[100];
+    char key[SIZE + 1] = "QWERTYUIOPASDFGHJKLZXCVBNM"; // Cipher alphabet
+    char ch;
+    int i;
+
+    printf("Enter plaintext: ");
+    fgets(plaintext, sizeof(plaintext), stdin);
+
+    for (i = 0; plaintext[i] != '\0'; i++) {
+        ch = plaintext[i];
+        if (isalpha(ch)) {
+            if (islower(ch))
+                ciphertext[i] = tolower(key[ch - 'a']);
+            else
+                ciphertext[i] = key[ch - 'A'];
+        } else {
+            ciphertext[i] = ch;
+        }
+    }
+    ciphertext[i] = '\0';
+
+    printf("Ciphertext: %s", ciphertext);
+
+    return 0;
+}# MAHESHCHALLAGUNDLA-CSA5118--CNS-
